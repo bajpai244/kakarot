@@ -12,6 +12,9 @@ build-mac: check
 build-devnet:
 	docker build . --tag sayajin-labs/kakarot -f ./docker/devnet/Dockerfile
 
+build-katana:
+	docker build -t kkrt_katana -f ./docker/katana/Dockerfile .
+
 check:
 	poetry lock --check
 

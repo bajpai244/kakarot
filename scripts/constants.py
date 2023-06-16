@@ -19,6 +19,7 @@ EVM_ADDRESS = (
 )
 
 NETWORK = os.getenv("STARKNET_NETWORK", "katana")
+
 NETWORK = (
     "testnet"
     if re.match(r".*(testnet|goerli)$", NETWORK, flags=re.I)
@@ -51,9 +52,8 @@ RPC_URLS = {
     "mainnet": f"https://starknet-mainnet.infura.io/v3/{os.getenv('RPC_KEY')}",
     "testnet": f"https://starknet-goerli.infura.io/v3/{os.getenv('RPC_KEY')}",
     "testnet2": f"https://starknet-goerli2.infura.io/v3/{os.getenv('RPC_KEY')}",
-    "devnet": "http://127.0.0.1:5050/rpc",
     "sharingan": os.getenv("SHARINGAN_RPC_URL"),
-    "katana": "http://127.0.0.1:5050",
+    "katana": "http://0.0.0.0:5050",
     "madara": "http://127.0.0.1:9944",
 }
 RPC_CLIENT = FullNodeClient(node_url=RPC_URLS[NETWORK])
