@@ -25,9 +25,7 @@ FROM python:3.9.13-slim-bullseye
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD if [ "$(cat /root/.kakarot_deploy_status)" -eq 0 ]; then exit 0; else exit 1; fi
 
-
-COPY --from=katana-builder /app/dojo/target/x86_64-unknown-linux-gnu/release/katana  /app/katana/x86_64-unknown-linux-gnu/release/katana 
-COPY --from=katana-builder /app/dojo/target/aarch64-unknown-linux-gnu/release/katana /app/katana/aarch64-unknown-linux-gnu/release/katana 
+COPY --from=katana-builder /app/dojo/target/ /app/katana
 COPY ./docker/katana/scripts /app/scripts
 
 WORKDIR /app
