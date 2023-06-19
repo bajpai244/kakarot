@@ -3,7 +3,7 @@ name: Deployments
 on:
   push:
     branches:
-      - "main"
+      - "feat/test-katana-workflow"
 
 jobs:
   deploy:
@@ -84,9 +84,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: ghcr.io/sayajin-labs/kakarot/devnet:latest
+          tags: ghcr.io/bajpai244/kakarot/katana:latest
           context: .
-          build-args: |
-            DEVNET_VERSION=${{ needs.deploy.outputs.devnet-version }}
-          file: ./docker/devnet/Dockerfile
+          file: ./docker/katana/Dockerfile
           platforms: linux/amd64,linux/arm64
